@@ -7,6 +7,15 @@ Currently Webkit only.
 
 #How To
 
+###Include CSS and JS File
+
+Place the following lines in your HTML <head></head>.
+
+```html
+<link rel="stylesheet" href="your_path_to/cato.css">
+<script src="your_path_to/cato.js"></script>
+```
+
 ```html
 <div id="your_id" class="cato">
   <img src="slideable_picture">
