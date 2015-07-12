@@ -16,6 +16,8 @@ Place the following lines in your HTML <head></head>.
 <script src="your_path_to/cato.js"></script>
 ```
 
+###Add the slider markup to your HTML <body></body>
+
 ```html
 <div id="your_id" class="cato">
   <img src="slideable_picture">
@@ -24,6 +26,9 @@ Place the following lines in your HTML <head></head>.
   <output></output>
 </div>
 ```
+
+###Add javascript
+Either in <script> tags in your HTML <body></body> tags or in a seperate JS file.
 
 ```javascript
 var options = { // are optional
