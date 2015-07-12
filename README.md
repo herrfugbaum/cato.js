@@ -9,14 +9,14 @@ Currently Webkit only.
 
 ###Include CSS and JS File
 
-Place the following lines in your HTML <head></head>.
+Place the following lines in your HTML ```html<head></head>```.
 
 ```html
 <link rel="stylesheet" href="your_path_to/cato.css">
 <script src="your_path_to/cato.js"></script>
 ```
 
-###Add the slider markup to your HTML <body></body>
+###Add the slider markup to your HTML ```html<body></body>```
 
 ```html
 <div id="your_id" class="cato">
@@ -28,7 +28,8 @@ Place the following lines in your HTML <head></head>.
 ```
 
 ###Add javascript
-Either in <script> tags in your HTML <body></body> tags or in a seperate JS file.
+
+Either in ```html<script></script>``` tags in your HTML ```html<body></body>``` tags or in a seperate JS file.
 
 ```javascript
 var options = { // are optional
