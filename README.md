@@ -53,8 +53,8 @@ var options = { // are optional
 
 ##ToDo
 
-[ ] css reset for all classes
-[ ] class asignment needs to be moved to js. user should only need to set an id on the container
+- [ ] css reset for all classes
+- [ ] class asignment needs to be moved to js. user should only need to set an id on the container
 
 ## Changelog
 
