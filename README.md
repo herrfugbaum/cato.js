@@ -7,13 +7,15 @@ Currently Webkit only.
 
 #How To
 
+###Download the Files from dest/
+
 ###Include CSS and JS File
 
 Place the following lines in your HTML head.
 
 ```html
-<link rel="stylesheet" href="your_path_to/cato.css">
-<script src="your_path_to/cato.js"></script>
+<link rel="stylesheet" href="your_path_to/cato.min.css">
+<script src="your_path_to/cato.min.js"></script>
 ```
 
 ###Add the slider markup
