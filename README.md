@@ -51,6 +51,11 @@ var options = { // are optional
     slider.createSlider('your_id')
 ```
 
+##ToDo
+
+[] css reset for all classes
+[] class asignment needs to be moved to js. user should only need to set an id on the container
+
 ## Changelog
 
 0.0.1 Initial Release
