@@ -5,14 +5,20 @@
 
 .comparison img {
   position: absolute;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  -ms-box-shadow: none;
+  border: none;
 }
 
 input[type=range].cato_inner {
   -webkit-appearance: none;
   background: none;
-  width: 700px;
   position: absolute;
-  top: 450px;
   margin: 7px 0 0 0;
   cursor: pointer;
   height: 4px;
@@ -85,7 +91,6 @@ input[type=range].cato_inner:focus::-moz-range-track {
 .indicator_bubble {
   display: none;
   position: absolute;
-  top: 410px;
   left: 50%;
   background-color: white;
   color:#6891a1;
@@ -101,7 +106,6 @@ input[type=range].cato_inner:focus::-moz-range-track {
   width: 0; 
   height: 0;
   position: absolute;
-  top: 435px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;  
   border-top: 5px solid #fff;
