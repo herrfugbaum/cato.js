@@ -39,7 +39,7 @@ function Cato (options) {
     imgToSlide.style.width = self.options.width + 'px'
     imgToSlide.style.height = self.options.height + 'px'
     range.style.top = imgBase.getBoundingClientRect().height + 'px'
-    range.style.width = self.options.width + 'px'
+    range.style.width = imgBase.width + 'px'
     output.style.top = imgBase.getBoundingClientRect().height - 40 + 'px'
     outputTriangle.style.top = imgBase.getBoundingClientRect().height - 15 + 'px'
 

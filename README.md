@@ -55,7 +55,7 @@ var options = { // are optional
 
 - [x] css reset for images
 - [x] class asignment needs to be moved to js. user should only need to set an id on the container
-- [ ] need to deal with max-width esp. on img tag
+- [x] need to deal with max-width esp. on img tag
 - [ ] remove necessity to pass initial range per hardcoded html properties
 
 ## Changelog
