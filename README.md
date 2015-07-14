@@ -56,6 +56,7 @@ var options = { // are optional
 - [x] css reset for images
 - [x] class asignment needs to be moved to js. user should only need to set an id on the container
 - [x] need to deal with max-width esp. on img tag
+- [ ] fix max-width problem for vertical sliders too
 - [ ] remove necessity to pass initial range per hardcoded html properties
 
 ## Changelog
