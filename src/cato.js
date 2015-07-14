@@ -28,11 +28,20 @@ function Cato (options) {
         self = this
 
     // INITIAL STYLINGS
+    addClass(container, 'comparison')
+    addClass(range, 'cato_inner')
+    addClass(range, 'rangeindicator')
+    addClass(output, 'indicator_bubble')
+    addClass(outputTriangle, 'indicator_triangle')
     container.style.height = self.options.height + 50 + 'px'
     imgBase.style.width = self.options.width + 'px'
     imgBase.style.height = self.options.height + 'px'
     imgToSlide.style.width = self.options.width + 'px'
     imgToSlide.style.height = self.options.height + 'px'
+    range.style.top = imgBase.getBoundingClientRect().height + 'px'
+    range.style.width = self.options.width + 'px'
+    output.style.top = imgBase.getBoundingClientRect().height - 40 + 'px'
+    outputTriangle.style.top = imgBase.getBoundingClientRect().height - 15 + 'px'
 
     // initial overlap
     if (isWebkit()) {
