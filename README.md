@@ -27,6 +27,7 @@ Place the following lines in your HTML head.
   <img src="visible_picture">
   <input type="range">
   <output></output>
+  <span></span>
 </div>
 ```
 
