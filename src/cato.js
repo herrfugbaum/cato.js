@@ -46,7 +46,8 @@ function Cato (options) {
 
     // initial overlap
     if (isWebkit()) {
-      imgBase.style.webkitClipPath = setInsetDirection(self.options.direction, self.options.initial)
+      var initialClip = (self.options.direction === 'horizontal') ? imgBase.width * self.options.initial / 100 : imgBase.height * self.options.initial / 100
+      imgBase.style.webkitClipPath = setInsetDirection(self.options.direction, initialClip)
     } else {
       imgBase.style.clip = 'rect(0px, 30px, 450px, 0px)'
     }
