@@ -42,6 +42,7 @@ function Cato (options) {
     range.style.width = imgBase.width + 'px'
     output.style.top = imgBase.getBoundingClientRect().height - 40 + 'px'
     outputTriangle.style.top = imgBase.getBoundingClientRect().height - 15 + 'px'
+    range.value = self.options.initial
 
     // initial overlap
     if (isWebkit()) {
