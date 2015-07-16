@@ -41,7 +41,7 @@ var options = { // are optional
       'direction': 'horizontal', // string horizontal & vertical
       'width': 700, // integer default = 700px
       'height': 450, // integer default = 450px
-      'initial': 30, // integer default = 30px (initial position for slider in px)
+      'initial': 30, // integer default = 30 % (initial position for slider in px)
       'filter': {
         'active': true, // boolean
         'effect': 'sepia(75%)' /* url, blur, brightness, contrast, drop-shadow, grayscale, hue-rotate, invert, opacity, saturate, sepia */
@@ -58,7 +58,8 @@ var options = { // are optional
 - [x] class asignment needs to be moved to js. user should only need to set an id on the container
 - [x] need to deal with max-width esp. on img tag
 - [x] fix max-width problem for vertical sliders too
-- [ ] remove necessity to pass initial range per hardcoded html properties
+- [x] remove necessity to pass initial range per hardcoded html properties
+- [ ] DRY code
 
 ## Changelog
 
