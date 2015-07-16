@@ -101,8 +101,8 @@ function Cato (options) {
       outputTriangle.style.left = slidedWith + 'px'
 
       if (self.options.direction === 'vertical') {
-        output.style.left = range.getBoundingClientRect().left - 45 + 'px'
-        outputTriangle.style.left = range.getBoundingClientRect().left - 22 + 'px'
+        output.style.left = imgBase.getBoundingClientRect().right - range.getBoundingClientRect().left - 45 + 'px'
+        outputTriangle.style.left = imgBase.getBoundingClientRect().right - range.getBoundingClientRect().left - 22 + 'px'
         output.style.top = slidedWith - 10 + 'px'
         outputTriangle.style.top = slidedWith + 'px'
         outputTriangle.style.transform = 'rotate(-90deg)'
