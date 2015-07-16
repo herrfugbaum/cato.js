@@ -59,6 +59,7 @@ var options = { // are optional
 - [x] need to deal with max-width esp. on img tag
 - [x] fix max-width problem for vertical sliders too
 - [x] remove necessity to pass initial range per hardcoded html properties
+- [ ] tooltips need correct initial position as well
 - [ ] DRY code
 
 ## Changelog
