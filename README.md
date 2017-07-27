@@ -1,15 +1,15 @@
-#About
+# About
 
 cato.js is a dependency free library for (image) comparison sliders.
 Keep in mind that this software is in a very early stage.
 Currently Webkit only.
 
 
-#How To
+# How To
 
-###Download the Files from dest/
+### Download the Files from dest/
 
-###Include CSS and JS File
+### Include CSS and JS File
 
 Place the following lines in your HTML head.
 
@@ -18,8 +18,7 @@ Place the following lines in your HTML head.
 <script src="your_path_to/cato.min.js"></script>
 ```
 
-###Add the slider markup
-... to your HTML
+### Add the slider markup to your HTML
 
 ```html
 <div id="your_id" class="cato">
@@ -31,7 +30,7 @@ Place the following lines in your HTML head.
 </div>
 ```
 
-###Add javascript
+### Add javascript
 
 Either in your HTML or in a seperate JS file.
 
@@ -52,7 +51,7 @@ var options = { // are optional
     slider.createSlider('your_id')
 ```
 
-##ToDo
+## ToDo
 
 - [x] css reset for images
 - [x] class asignment needs to be moved to js. user should only need to set an id on the container
