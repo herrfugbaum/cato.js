@@ -16,9 +16,9 @@ function Cato (options) {
     }
   }
 
-  Cato.prototype.createSlider = function (id) {
+  Cato.prototype.createSlider = function (el) {
 
-    var container = document.getElementById(id),
+    var container = el,
         containerInner = container.children,
         imgToSlide = containerInner[0],
         imgBase = containerInner[1],
@@ -45,12 +45,9 @@ function Cato (options) {
     range.value = self.options.initial
 
     // initial overlap
-    if (isWebkit()) {
-      var initialClip = (self.options.direction === 'horizontal') ? imgBase.width * self.options.initial / 100 : imgBase.height * self.options.initial / 100
-      imgBase.style.webkitClipPath = setInsetDirection(self.options.direction, initialClip)
-    } else {
-      imgBase.style.clip = 'rect(0px, 30px, 450px, 0px)'
-    }
+
+    var initialClip = (self.options.direction === 'horizontal') ? imgBase.width * self.options.initial / 100 : imgBase.height * self.options.initial / 100
+    imgBase.style.clipPath = setInsetDirection(self.options.direction, initialClip)
 
     // flip input range and adjust to the side if vertical
     if (self.options.direction === 'vertical') {
@@ -93,12 +90,7 @@ function Cato (options) {
           height = imgBase.getBoundingClientRect().height,
           slidedWith = (self.options.direction === 'horizontal') ? width * range.value / 100 : height * range.value / 100
 
-      if (isWebkit()) {
-        imgBase.style.webkitClipPath = setInsetDirection(self.options.direction, slidedWith)
-      } else {
-        imgBase.style.clip = 'rect(0px, ' + slidedWith + 'px, 450px, 0px)'
-      }
-
+      imgBase.style.clipPath = setInsetDirection(self.options.direction, slidedWith)
       output.style.left = slidedWith + 'px'
       outputTriangle.style.left = slidedWith + 'px'
 
