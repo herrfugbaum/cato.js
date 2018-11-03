@@ -4,7 +4,8 @@
   "description": "Small, dependency-free library for (image) comparison sliders.",
   "main": "src/cato.js",
   "scripts": {
-    "build": "NODE_ENV=production babel src -d dest",
+    "build": "NODE_ENV=production webpack --config webpack.config.js",
+    "build-demo": "webpack demo/index.js -o demo/demo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,10 +24,8 @@
   },
   "homepage": "https://github.com/herrfugbaum/cato.js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "babel-preset-minify": "^0.5.0"
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {}
 }

@@ -1,7 +1,7 @@
 'use strict'
 // Compare Apples To Oranges
 
-class Cato {
+export default class Cato {
   constructor (options) {
     this.options = {
       'tooltips': options.tooltips || false,
