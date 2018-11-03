@@ -4,11 +4,12 @@
   "description": "Small, dependency-free library for (image) comparison sliders.",
   "main": "src/cato.js",
   "scripts": {
+    "build": "NODE_ENV=production babel src -d dest",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slamcode/cato.js.git"
+    "url": "git+https://github.com/herrfugbaum/cato.js.git"
   },
   "keywords": [
     "image comparison",
@@ -18,12 +19,14 @@
   "author": "Pascal Spiesz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/slamcode/cato.js/issues"
+    "url": "https://github.com/herrfugbaum/cato.js/issues"
   },
-  "homepage": "https://github.com/slamcode/cato.js#readme",
+  "homepage": "https://github.com/herrfugbaum/cato.js#readme",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-cssmin": "^0.12.3",
-    "grunt-contrib-uglify": "^0.9.1"
-  }
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-preset-minify": "^0.5.0"
+  },
+  "dependencies": {}
 }
