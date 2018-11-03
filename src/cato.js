@@ -2,22 +2,21 @@
 // Compare Apples To Oranges
 
 export default class Cato {
-  constructor (options) {
+  constructor(options) {
     this.options = {
-      'tooltips': options.tooltips || false,
-      'direction': options.direction || 'horizontal',
-      'width': options.width || 700,
-      'height': options.height || 450,
-      'initial': options.initial || 30,
-      'filter': {
-        'active': options.filter.active || false,
-        'effect': options.filter.effect || null
-      }
+      tooltips: options.tooltips || false,
+      direction: options.direction || 'horizontal',
+      width: options.width || 700,
+      height: options.height || 450,
+      initial: options.initial || 30,
+      filter: {
+        active: options.filter.active || false,
+        effect: options.filter.effect || null,
+      },
     }
   }
 
-  createSlider (el) {
-
+  createSlider(el) {
     const container = el
     const containerInner = container.children
     const imgToSlide = containerInner[0]
@@ -41,19 +40,30 @@ export default class Cato {
     range.style.top = imgBase.getBoundingClientRect().height + 'px'
     range.style.width = imgBase.width + 'px'
     output.style.top = imgBase.getBoundingClientRect().height - 40 + 'px'
-    outputTriangle.style.top = imgBase.getBoundingClientRect().height - 15 + 'px'
+    outputTriangle.style.top =
+      imgBase.getBoundingClientRect().height - 15 + 'px'
     range.value = self.options.initial
 
     // initial overlap
 
-    const initialClip = (self.options.direction === 'horizontal') ? imgBase.width * self.options.initial / 100 : imgBase.height * self.options.initial / 100
-    imgBase.style.clipPath = setInsetDirection(self.options.direction, initialClip)
+    const initialClip =
+      self.options.direction === 'horizontal'
+        ? (imgBase.width * self.options.initial) / 100
+        : (imgBase.height * self.options.initial) / 100
+    imgBase.style.clipPath = setInsetDirection(
+      self.options.direction,
+      initialClip,
+    )
 
     // flip input range and adjust to the side if vertical
     if (self.options.direction === 'vertical') {
       range.style.transform = 'rotate(90deg)'
       range.style.width = imgBase.getBoundingClientRect().height + 'px'
-      range.style.left = imgBase.getBoundingClientRect().right - range.getBoundingClientRect().left + 7 + 'px'
+      range.style.left =
+        imgBase.getBoundingClientRect().right -
+        range.getBoundingClientRect().left +
+        7 +
+        'px'
       range.style.top = imgBase.getBoundingClientRect().height / 2 + 'px'
       range.style.margin = '-1px 3px 1px'
     }
@@ -65,82 +75,97 @@ export default class Cato {
 
     // EVENT REGISTRATIONS
 
-    range.addEventListener('input', function () {
+    range.addEventListener('input', function() {
       handleSlides(self)
     })
 
     if (self.options.tooltips) {
-      range.addEventListener('focus', function () {
+      range.addEventListener('focus', function() {
         handleFocus()
       })
 
-      range.addEventListener('blur', function () {
+      range.addEventListener('blur', function() {
         handleBlur()
       })
     }
 
     // EVENT HANDLERS
 
-    const handleSlides = function (self) {
+    const handleSlides = function(self) {
       const width = imgBase.width
       const height = imgBase.getBoundingClientRect().height
-      const slidedWith = (self.options.direction === 'horizontal') ? width * range.value / 100 : height * range.value / 100
+      const slidedWith =
+        self.options.direction === 'horizontal'
+          ? (width * range.value) / 100
+          : (height * range.value) / 100
 
-      imgBase.style.clipPath = setInsetDirection(self.options.direction, slidedWith)
+      imgBase.style.clipPath = setInsetDirection(
+        self.options.direction,
+        slidedWith,
+      )
       output.style.left = slidedWith + 'px'
       outputTriangle.style.left = slidedWith + 'px'
 
       if (self.options.direction === 'vertical') {
-        output.style.left = imgBase.getBoundingClientRect().right - range.getBoundingClientRect().left - 45 + 'px'
-        outputTriangle.style.left = imgBase.getBoundingClientRect().right - range.getBoundingClientRect().left - 22 + 'px'
+        output.style.left =
+          imgBase.getBoundingClientRect().right -
+          range.getBoundingClientRect().left -
+          45 +
+          'px'
+        outputTriangle.style.left =
+          imgBase.getBoundingClientRect().right -
+          range.getBoundingClientRect().left -
+          22 +
+          'px'
         output.style.top = slidedWith - 10 + 'px'
         outputTriangle.style.top = slidedWith + 'px'
         outputTriangle.style.transform = 'rotate(-90deg)'
       }
 
       output.setAttribute('data-range', range.value.toString(10))
-
     }
 
-    const handleFocus = function () {
+    const handleFocus = function() {
       addClass(output, 'active')
       addClass(outputTriangle, 'active')
     }
 
-    const handleBlur = function () {
+    const handleBlur = function() {
       removeClass(output, 'active')
       removeClass(outputTriangle, 'active')
     }
-
   }
 }
 
-  // HELPERS
+// HELPERS
 
-  const addClass = function (el, className) {
-    // see youmightnotneedjquery.com
-    if (el.classList) {
-      el.classList.add(className)
-    } else {
-      el.className += ' ' + className
-    }
+const addClass = function(el, className) {
+  // see youmightnotneedjquery.com
+  if (el.classList) {
+    el.classList.add(className)
+  } else {
+    el.className += ' ' + className
   }
+}
 
-  const removeClass = function (el, className) {
-    // see youmightnotneedjquery.com
-    if (el.classList) {
-      el.classList.remove(className)
-    } else {
-      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ')
-    }
+const removeClass = function(el, className) {
+  // see youmightnotneedjquery.com
+  if (el.classList) {
+    el.classList.remove(className)
+  } else {
+    el.className = el.className.replace(
+      new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'),
+      ' ',
+    )
   }
+}
 
-  const setInsetDirection = function (direction, val) {
-    if (direction === 'horizontal') {
-      return 'inset(0px 0px 0px ' + val + 'px)'
-    } else if (direction === 'vertical') {
-      return 'inset(' + val + 'px 0px 0px 0px)'
-    } else {
-      throw new Error('Direction must be either horizontal or vertical')
-    }
+const setInsetDirection = function(direction, val) {
+  if (direction === 'horizontal') {
+    return 'inset(0px 0px 0px ' + val + 'px)'
+  } else if (direction === 'vertical') {
+    return 'inset(' + val + 'px 0px 0px 0px)'
+  } else {
+    throw new Error('Direction must be either horizontal or vertical')
   }
+}
