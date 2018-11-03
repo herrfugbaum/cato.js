@@ -11,8 +11,8 @@ function Cato (options) {
     'height': opts.height || 450,
     'initial': opts.initial || 30,
     'filter': {
-      'active': opts.filter_active || false,
-      'effect': opts.filter_effect || false
+      'active': opts.filter.active || false,
+      'effect': opts.filter.effect || null
     }
   }
 
@@ -60,11 +60,7 @@ function Cato (options) {
 
     // Applying Filters if any
     if (self.options.filter.active) {
-      if (isWebkit()) {
-        imgToSlide.style.webkitFilter = self.options.filter.effect
-      } else {
-        imgToSlide.style.filter = self.options.filter.effect
-      }
+      imgToSlide.style.filter = self.options.filter.effect
     }
 
     // EVENT REGISTRATIONS
@@ -135,13 +131,6 @@ function Cato (options) {
       el.classList.remove(className)
     } else {
       el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ')
-    }
-  }
-
-  var isWebkit = function () {
-    var ua = window.navigator.userAgent.toLowerCase()
-    if ((/webkit/).test(ua)) {
-      return true
     }
   }
 
