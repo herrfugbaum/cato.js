@@ -4,17 +4,17 @@ describe('Cato', () => {
   describe('smoke:', () => {
     it('should take an options argument', () => {
       const options = {
-        'tooltips': true,
-        'direction': 'horizontal',
-        'width': 700,
-        'height': 450,
-        'initial': 30,
-         'filter': {
-            'active': true,
-            'effect': 'sepia(50%)'
-          }
-        }
-      
+        tooltips: true,
+        direction: 'horizontal',
+        width: 700,
+        height: 450,
+        initial: 30,
+        filter: {
+          active: true,
+          effect: 'sepia(50%)',
+        },
+      }
+
       const slider = new Cato(options)
       expect(slider.options.tooltips).toBe(true)
       expect(slider.options.direction).toBe('horizontal')

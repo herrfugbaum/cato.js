@@ -2,6 +2,8 @@
 - [How To](#how-to)
 - [Changelog](#changelog)
 
+[![Build Status](https://travis-ci.org/herrfugbaum/cato.js.svg?branch=master)](https://travis-ci.org/herrfugbaum/cato.js)
+
 # About
 
 cato.js is a dependency free library for (image) comparison sliders.
