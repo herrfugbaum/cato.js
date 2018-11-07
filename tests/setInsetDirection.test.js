@@ -1,6 +1,6 @@
 import setInsetDirection from '../src/util/setInsetDirection.js'
 
-describe('Cato', () => {
+describe('setInsetDirection', () => {
   describe('smoke:', () => {
     it('should be defined', () => {
       expect(setInsetDirection('vertical', 10)).toBeDefined()

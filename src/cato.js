@@ -2,6 +2,7 @@
 // Compare Apples To Oranges
 
 import setInsetDirection from './util/setInsetDirection.js'
+import { addClass, removeClass } from './util/domClasses.js'
 
 export default class Cato {
   constructor(options) {
@@ -136,28 +137,5 @@ export default class Cato {
       removeClass(output, 'active')
       removeClass(outputTriangle, 'active')
     }
-  }
-}
-
-// HELPERS
-
-const addClass = function(el, className) {
-  // see youmightnotneedjquery.com
-  if (el.classList) {
-    el.classList.add(className)
-  } else {
-    el.className += ' ' + className
-  }
-}
-
-const removeClass = function(el, className) {
-  // see youmightnotneedjquery.com
-  if (el.classList) {
-    el.classList.remove(className)
-  } else {
-    el.className = el.className.replace(
-      new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'),
-      ' ',
-    )
   }
 }
