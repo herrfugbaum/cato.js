@@ -3,6 +3,7 @@
 - [Changelog](#changelog)
 
 [![Build Status](https://travis-ci.org/herrfugbaum/cato.js.svg?branch=master)](https://travis-ci.org/herrfugbaum/cato.js)
+[![Coverage Status](https://coveralls.io/repos/github/herrfugbaum/cato.js/badge.svg?branch=master)](https://coveralls.io/github/herrfugbaum/cato.js?branch=master)
 
 # About
 
