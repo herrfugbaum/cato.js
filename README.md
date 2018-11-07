@@ -19,8 +19,7 @@ For the initial (Webkit only) release see [v0.0.1](https://github.com/herrfugbau
 Needs a rewrite.
 
 
-You can find the How To of version 0.0.1 [here]([https://github.com/herrfugbaum/cato.js/releases/tag/v0.0.1)
-
+You can find the How To of version 0.0.1 [here](https://github.com/herrfugbaum/cato.js/releases/tag/v0.0.1)
 
 # Changelog
 
