@@ -7,6 +7,8 @@
 
 # About
 
+**C**ompare **A**pples **T**o **O**ranges
+
 cato.js is a dependency free library for (image) comparison sliders.
 
 It currently gets rewritten in modern JavaScript.
