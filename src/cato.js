@@ -1,6 +1,8 @@
 'use strict'
 // Compare Apples To Oranges
 
+import setInsetDirection from './util/setInsetDirection.js'
+
 export default class Cato {
   constructor(options) {
     this.options = {
@@ -160,7 +162,7 @@ const removeClass = function(el, className) {
   }
 }
 
-const setInsetDirection = function(direction, val) {
+/* const setInsetDirection = function(direction, val) {
   if (direction === 'horizontal') {
     return 'inset(0px 0px 0px ' + val + 'px)'
   } else if (direction === 'vertical') {
@@ -168,4 +170,4 @@ const setInsetDirection = function(direction, val) {
   } else {
     throw new Error('Direction must be either horizontal or vertical')
   }
-}
+} */

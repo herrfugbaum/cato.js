@@ -1,20 +1,24 @@
 import Cato from '../src/cato.js'
 
+const options = {
+  tooltips: true,
+  direction: 'horizontal',
+  width: 700,
+  height: 450,
+  initial: 30,
+  filter: {
+    active: true,
+    effect: 'sepia(50%)',
+  },
+}
+
 describe('Cato', () => {
   describe('smoke:', () => {
+    it('should be an instace of the Cato class', () => {
+      expect(new Cato(options)).toBeInstanceOf(Cato)
+    })
+
     it('should take an options argument', () => {
-      const options = {
-        'tooltips': true,
-        'direction': 'horizontal',
-        'width': 700,
-        'height': 450,
-        'initial': 30,
-         'filter': {
-            'active': true,
-            'effect': 'sepia(50%)'
-          }
-        }
-      
       const slider = new Cato(options)
       expect(slider.options.tooltips).toBe(true)
       expect(slider.options.direction).toBe('horizontal')
