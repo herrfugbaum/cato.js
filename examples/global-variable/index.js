@@ -1,5 +1,3 @@
-import Cato from '../../dest/cato.min.js'
-
 const optionsFirstSlider = {
   // are optional
   tooltips: true, // boolean
@@ -28,10 +26,10 @@ const optionsSecondSlider = {
   },
 }
 
-const firstSlider = new Cato(optionsFirstSlider)
+const firstSlider = new cato.default(optionsFirstSlider)
 
 firstSlider.createSlider(document.getElementById('first-slider'))
 
-const secondSlider = new Cato(optionsSecondSlider)
+const secondSlider = new cato.default(optionsSecondSlider)
 
 secondSlider.createSlider(document.getElementById('second-slider'))
