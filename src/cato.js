@@ -3,6 +3,7 @@
 
 import setInsetDirection from './util/setInsetDirection.js'
 import { addClass, removeClass } from './util/domClasses.js'
+import './cato.css'
 
 export default class Cato {
   constructor(options) {
