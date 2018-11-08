@@ -31,8 +31,8 @@ export default class Cato {
     const self = this
 
     // INITIAL STYLINGS
-    addClass(container, 'comparison')
-    addClass(range, 'cato_inner')
+    addClass(container, 'cato')
+    addClass(range, 'cato--inner')
     addClass(range, 'rangeindicator')
     addClass(output, 'indicator_bubble')
     addClass(outputTriangle, 'indicator_triangle')
