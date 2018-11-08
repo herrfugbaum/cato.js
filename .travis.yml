@@ -3,6 +3,9 @@ node_js:
   - "node"
 install:
   - yarn install
+  - yarn global add codecov
 cache:
   directories:
     - "node_modules"
+after_success:
+  - codecov

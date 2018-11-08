@@ -5,7 +5,7 @@
   "main": "src/cato.js",
   "scripts": {
     "build": "webpack --config webpack.config.js --mode=production",
-    "test": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test": "jest",
     "watch-test": "jest --watch"
   },
   "repository": {
@@ -44,6 +44,8 @@
   },
   "dependencies": {},
   "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/tests/__mocks__/styleMock.js"
     }
