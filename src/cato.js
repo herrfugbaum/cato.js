@@ -3,6 +3,7 @@
 
 import setInsetDirection from './util/setInsetDirection.js'
 import { addClass, removeClass } from './util/domClasses.js'
+import { normalizeRightsideOffset } from './util/normalizeRightsideOffset.js'
 import './cato.css'
 
 export default class Cato {
@@ -68,11 +69,7 @@ export default class Cato {
     if (self.options.direction === 'vertical') {
       range.style.transform = 'rotate(90deg)'
       range.style.width = imgBase.getBoundingClientRect().height + 'px'
-      range.style.left =
-        imgBase.getBoundingClientRect().right -
-        range.getBoundingClientRect().left +
-        7 +
-        'px'
+      range.style.left = normalizeRightsideOffset(imgBase, range) + 7 + 'px'
       range.style.top = imgBase.getBoundingClientRect().height / 2 + 'px'
       range.style.margin = '-1px 3px 1px'
     }
@@ -116,16 +113,9 @@ export default class Cato {
       outputTriangle.style.left = slidedWith + 'px'
 
       if (self.options.direction === 'vertical') {
-        output.style.left =
-          imgBase.getBoundingClientRect().right -
-          range.getBoundingClientRect().left -
-          45 +
-          'px'
+        output.style.left = normalizeRightsideOffset(imgBase, range) - 45 + 'px'
         outputTriangle.style.left =
-          imgBase.getBoundingClientRect().right -
-          range.getBoundingClientRect().left -
-          22 +
-          'px'
+          normalizeRightsideOffset(imgBase, range) - 22 + 'px'
         output.style.top = slidedWith - 10 + 'px'
         outputTriangle.style.top = slidedWith + 'px'
         outputTriangle.style.transform = 'rotate(-90deg)'
