@@ -1,3 +1,5 @@
+'use strict'
+
 const setInsetDirection = function(direction, val) {
   if (direction === 'horizontal') {
     return 'inset(0px 0px 0px ' + val + 'px)'

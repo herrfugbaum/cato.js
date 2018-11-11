@@ -25,9 +25,14 @@ export default class Cato {
     const containerInner = container.children
     const imgToSlide = containerInner[0]
     const imgBase = containerInner[1]
-    const range = containerInner[2]
-    const output = containerInner[3]
-    const outputTriangle = containerInner[4]
+
+    const range = document.createElement('input')
+    const output = document.createElement('output')
+    const outputTriangle = document.createElement('span')
+
+    range.type = 'range'
+    el.append(range, output, outputTriangle)
+
     const self = this
 
     // INITIAL STYLINGS

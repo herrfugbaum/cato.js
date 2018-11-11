@@ -1,3 +1,5 @@
+'use strict'
+
 const addClass = function(el, className) {
   // see youmightnotneedjquery.com
   if (el.classList) {

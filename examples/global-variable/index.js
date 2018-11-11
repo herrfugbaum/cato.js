@@ -26,10 +26,10 @@ const optionsSecondSlider = {
   },
 }
 
-const firstSlider = new cato.default(optionsFirstSlider)
+const firstSlider = new Cato(optionsFirstSlider)
 
 firstSlider.createSlider(document.getElementById('first-slider'))
 
-const secondSlider = new cato.default(optionsSecondSlider)
+const secondSlider = new Cato(optionsSecondSlider)
 
 secondSlider.createSlider(document.getElementById('second-slider'))

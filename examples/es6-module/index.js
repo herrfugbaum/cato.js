@@ -1,4 +1,4 @@
-import Cato from './../../src/cato.js'
+import Cato from './../../dest/cato.min.js'
 
 const optionsFirstSlider = {
   // are optional

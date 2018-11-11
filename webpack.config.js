@@ -8,7 +8,8 @@ module.exports = {
   output: {
     filename: 'cato.min.js',
     path: path.resolve(__dirname, 'dest'),
-    library: 'cato',
+    library: 'Cato',
+    libraryExport: 'default',
     libraryTarget: 'umd',
   },
   optimization: {
