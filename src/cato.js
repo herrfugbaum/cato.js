@@ -87,11 +87,7 @@ export default class Cato {
     }
   }
 
-  createSlider() {
-    this.initHTML()
-    this.initStyles()
-    // EVENT REGISTRATIONS
-
+  registerEvents() {
     this.range.addEventListener('input', () => {
       handleSlides(this)
     })
@@ -106,8 +102,7 @@ export default class Cato {
       })
     }
 
-    // EVENT HANDLERS
-
+    // Event handlers
     const handleSlides = function(self) {
       const width = self.imgBase.width
       const height = self.imgBase.getBoundingClientRect().height
@@ -145,5 +140,11 @@ export default class Cato {
       removeClass(self.output, 'active')
       removeClass(self.outputTriangle, 'active')
     }
+  }
+
+  createSlider() {
+    this.initHTML()
+    this.initStyles()
+    this.registerEvents()
   }
 }
