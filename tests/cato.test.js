@@ -15,11 +15,21 @@ const options = {
 describe('Cato', () => {
   describe('smoke:', () => {
     it('should be an instace of the Cato class', () => {
-      expect(new Cato(options)).toBeInstanceOf(Cato)
+      const container = document.createElement('div')
+      const img1 = new Image()
+      const img2 = new Image()
+
+      container.append(img1, img2)
+
+      expect(new Cato(options, container)).toBeInstanceOf(Cato)
     })
 
     it('should take an options argument', () => {
-      const slider = new Cato(options)
+      const container = document.createElement('div')
+      const img1 = new Image()
+      const img2 = new Image()
+      container.append(img1, img2)
+      const slider = new Cato(options, container)
       expect(slider.options.tooltips).toBe(true)
       expect(slider.options.direction).toBe('horizontal')
       expect(slider.options.width).toBe(700)

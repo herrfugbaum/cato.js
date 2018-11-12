@@ -7,7 +7,7 @@ import { normalizeRightsideOffset } from './util/normalizeRightsideOffset.js'
 import './cato.css'
 
 export default class Cato {
-  constructor(options) {
+  constructor(options, el) {
     this.options = {
       tooltips: options.tooltips || false,
       direction: options.direction || 'horizontal',
@@ -19,10 +19,11 @@ export default class Cato {
         effect: options.filter.effect || null,
       },
     }
+    this.slider = el
   }
 
-  createSlider(el) {
-    const container = el
+  createSlider() {
+    const container = this.slider
     const containerInner = container.children
     const imgToSlide = containerInner[0]
     const imgBase = containerInner[1]
@@ -32,9 +33,7 @@ export default class Cato {
     const outputTriangle = document.createElement('span')
 
     range.type = 'range'
-    el.append(range, output, outputTriangle)
-
-    const self = this
+    this.slider.append(range, output, outputTriangle)
 
     // INITIAL STYLINGS
     addClass(container, 'cato')
@@ -42,31 +41,31 @@ export default class Cato {
     addClass(range, 'rangeindicator')
     addClass(output, 'indicator_bubble')
     addClass(outputTriangle, 'indicator_triangle')
-    container.style.height = self.options.height + 50 + 'px'
-    imgBase.style.width = self.options.width + 'px'
-    imgBase.style.height = self.options.height + 'px'
-    imgToSlide.style.width = self.options.width + 'px'
-    imgToSlide.style.height = self.options.height + 'px'
+    container.style.height = this.options.height + 50 + 'px'
+    imgBase.style.width = this.options.width + 'px'
+    imgBase.style.height = this.options.height + 'px'
+    imgToSlide.style.width = this.options.width + 'px'
+    imgToSlide.style.height = this.options.height + 'px'
     range.style.top = imgBase.getBoundingClientRect().height + 'px'
     range.style.width = imgBase.width + 'px'
     output.style.top = imgBase.getBoundingClientRect().height - 40 + 'px'
     outputTriangle.style.top =
       imgBase.getBoundingClientRect().height - 15 + 'px'
-    range.value = self.options.initial
+    range.value = this.options.initial
 
     // initial overlap
 
     const initialClip =
-      self.options.direction === 'horizontal'
-        ? (imgBase.width * self.options.initial) / 100
-        : (imgBase.height * self.options.initial) / 100
+      this.options.direction === 'horizontal'
+        ? (imgBase.width * this.options.initial) / 100
+        : (imgBase.height * this.options.initial) / 100
     imgBase.style.clipPath = setInsetDirection(
-      self.options.direction,
+      this.options.direction,
       initialClip,
     )
 
     // flip input range and adjust to the side if vertical
-    if (self.options.direction === 'vertical') {
+    if (this.options.direction === 'vertical') {
       range.style.transform = 'rotate(90deg)'
       range.style.width = imgBase.getBoundingClientRect().height + 'px'
       range.style.left = normalizeRightsideOffset(imgBase, range) + 7 + 'px'
@@ -75,17 +74,18 @@ export default class Cato {
     }
 
     // Applying Filters if any
-    if (self.options.filter.active) {
-      imgToSlide.style.filter = self.options.filter.effect
+    if (this.options.filter.active) {
+      imgToSlide.style.filter = this.options.filter.effect
     }
 
     // EVENT REGISTRATIONS
 
-    range.addEventListener('input', function() {
-      handleSlides(self)
+    range.addEventListener('input', () => {
+      console.log(this)
+      handleSlides(this)
     })
 
-    if (self.options.tooltips) {
+    if (this.options.tooltips) {
       range.addEventListener('focus', function() {
         handleFocus()
       })
