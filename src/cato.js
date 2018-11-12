@@ -81,10 +81,6 @@ export default class Cato {
 
     // flip input range and adjust to the side if vertical
     if (this.options.direction === 'vertical') {
-      console.log(
-        imgBase.getBoundingClientRect(),
-        range.getBoundingClientRect(),
-      )
       setStyles(range, {
         transform: 'rotate(90deg)',
         width: imgBase.getBoundingClientRect().height + 'px',
