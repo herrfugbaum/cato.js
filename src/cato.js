@@ -22,18 +22,26 @@ export default class Cato {
     this.slider = el
   }
 
-  createSlider() {
+  initHTML() {
     const container = this.slider
-    const containerInner = container.children
-    const imgToSlide = containerInner[0]
-    const imgBase = containerInner[1]
+    this.imgToSlide = container.children[0]
+    this.imgBase = container.children[1]
+    this.range = document.createElement('input')
+    this.output = document.createElement('output')
+    this.outputTriangle = document.createElement('span')
+    this.range.type = 'range'
 
-    const range = document.createElement('input')
-    const output = document.createElement('output')
-    const outputTriangle = document.createElement('span')
+    this.slider.append(this.range, this.output, this.outputTriangle)
+  }
 
-    range.type = 'range'
-    this.slider.append(range, output, outputTriangle)
+  initStyles() {
+    const container = this.slider
+    const imgToSlide = this.imgToSlide
+    const imgBase = this.imgBase
+
+    const range = this.range
+    const output = this.output
+    const outputTriangle = this.outputTriangle
 
     // INITIAL STYLINGS
     addClass(container, 'cato')
@@ -77,61 +85,65 @@ export default class Cato {
     if (this.options.filter.active) {
       imgToSlide.style.filter = this.options.filter.effect
     }
+  }
 
+  createSlider() {
+    this.initHTML()
+    this.initStyles()
     // EVENT REGISTRATIONS
 
-    range.addEventListener('input', () => {
-      console.log(this)
+    this.range.addEventListener('input', () => {
       handleSlides(this)
     })
 
     if (this.options.tooltips) {
-      range.addEventListener('focus', function() {
-        handleFocus()
+      this.range.addEventListener('focus', () => {
+        handleFocus(this)
       })
 
-      range.addEventListener('blur', function() {
-        handleBlur()
+      this.range.addEventListener('blur', () => {
+        handleBlur(this)
       })
     }
 
     // EVENT HANDLERS
 
     const handleSlides = function(self) {
-      const width = imgBase.width
-      const height = imgBase.getBoundingClientRect().height
+      const width = self.imgBase.width
+      const height = self.imgBase.getBoundingClientRect().height
       const slidedWith =
         self.options.direction === 'horizontal'
-          ? (width * range.value) / 100
-          : (height * range.value) / 100
+          ? (width * self.range.value) / 100
+          : (height * self.range.value) / 100
 
-      imgBase.style.clipPath = setInsetDirection(
+      self.imgBase.style.clipPath = setInsetDirection(
         self.options.direction,
         slidedWith,
       )
-      output.style.left = slidedWith + 'px'
-      outputTriangle.style.left = slidedWith + 'px'
+      self.output.style.left = slidedWith + 'px'
+      self.outputTriangle.style.left = slidedWith + 'px'
 
       if (self.options.direction === 'vertical') {
-        output.style.left = normalizeRightsideOffset(imgBase, range) - 45 + 'px'
-        outputTriangle.style.left =
-          normalizeRightsideOffset(imgBase, range) - 22 + 'px'
-        output.style.top = slidedWith - 10 + 'px'
-        outputTriangle.style.top = slidedWith + 'px'
-        outputTriangle.style.transform = 'rotate(-90deg)'
+        self.output.style.left =
+          normalizeRightsideOffset(self.imgBase, self.range) - 45 + 'px'
+        self.outputTriangle.style.left =
+          normalizeRightsideOffset(self.imgBase, self.range) - 22 + 'px'
+        self.output.style.top = slidedWith - 10 + 'px'
+        self.outputTriangle.style.top = slidedWith + 'px'
+        self.outputTriangle.style.transform = 'rotate(-90deg)'
       }
 
-      output.setAttribute('data-range', range.value.toString(10))
+      self.output.setAttribute('data-range', self.range.value.toString(10))
     }
 
-    const handleFocus = function() {
-      addClass(output, 'active')
-      addClass(outputTriangle, 'active')
+    const handleFocus = function(self) {
+      addClass(self.output, 'active')
+      addClass(self.outputTriangle, 'active')
     }
 
-    const handleBlur = function() {
-      removeClass(output, 'active')
-      removeClass(outputTriangle, 'active')
+    const handleBlur = function(self) {
+      removeClass(self.output, 'active')
+      removeClass(self.outputTriangle, 'active')
     }
   }
 }
