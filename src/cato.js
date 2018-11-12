@@ -4,6 +4,7 @@
 import setInsetDirection from './util/setInsetDirection.js'
 import { addClass, removeClass } from './util/domClasses.js'
 import { normalizeRightsideOffset } from './util/normalizeRightsideOffset.js'
+import { setStyles } from './util/setStyles.js'
 import './cato.css'
 
 export default class Cato {
@@ -50,19 +51,25 @@ export default class Cato {
     addClass(output, 'indicator_bubble')
     addClass(outputTriangle, 'indicator_triangle')
     container.style.height = this.options.height + 50 + 'px'
-    imgBase.style.width = this.options.width + 'px'
-    imgBase.style.height = this.options.height + 'px'
-    imgToSlide.style.width = this.options.width + 'px'
-    imgToSlide.style.height = this.options.height + 'px'
-    range.style.top = imgBase.getBoundingClientRect().height + 'px'
-    range.style.width = imgBase.width + 'px'
+    setStyles(imgBase, {
+      width: this.options.width + 'px',
+      height: this.options.height + 'px',
+    })
+    setStyles(imgToSlide, {
+      width: this.options.width + 'px',
+      height: this.options.height + 'px',
+    })
+    setStyles(range, {
+      top: imgBase.getBoundingClientRect().height + 'px',
+      width: imgBase.width + 'px',
+    })
+
     output.style.top = imgBase.getBoundingClientRect().height - 40 + 'px'
     outputTriangle.style.top =
       imgBase.getBoundingClientRect().height - 15 + 'px'
     range.value = this.options.initial
 
     // initial overlap
-
     const initialClip =
       this.options.direction === 'horizontal'
         ? (imgBase.width * this.options.initial) / 100
@@ -74,11 +81,17 @@ export default class Cato {
 
     // flip input range and adjust to the side if vertical
     if (this.options.direction === 'vertical') {
-      range.style.transform = 'rotate(90deg)'
-      range.style.width = imgBase.getBoundingClientRect().height + 'px'
-      range.style.left = normalizeRightsideOffset(imgBase, range) + 7 + 'px'
-      range.style.top = imgBase.getBoundingClientRect().height / 2 + 'px'
-      range.style.margin = '-1px 3px 1px'
+      console.log(
+        imgBase.getBoundingClientRect(),
+        range.getBoundingClientRect(),
+      )
+      setStyles(range, {
+        transform: 'rotate(90deg)',
+        width: imgBase.getBoundingClientRect().height + 'px',
+        left: normalizeRightsideOffset(imgBase, range) + 7 + 'px',
+        top: imgBase.getBoundingClientRect().height / 2 + 'px',
+        margin: '-1px 3px 1px',
+      })
     }
 
     // Applying Filters if any
@@ -119,13 +132,15 @@ export default class Cato {
       self.outputTriangle.style.left = slidedWith + 'px'
 
       if (self.options.direction === 'vertical') {
-        self.output.style.left =
-          normalizeRightsideOffset(self.imgBase, self.range) - 45 + 'px'
-        self.outputTriangle.style.left =
-          normalizeRightsideOffset(self.imgBase, self.range) - 22 + 'px'
-        self.output.style.top = slidedWith - 10 + 'px'
-        self.outputTriangle.style.top = slidedWith + 'px'
-        self.outputTriangle.style.transform = 'rotate(-90deg)'
+        setStyles(self.output, {
+          left: normalizeRightsideOffset(self.imgBase, self.range) - 45 + 'px',
+          top: slidedWith - 10 + 'px',
+        })
+        setStyles(self.outputTriangle, {
+          left: normalizeRightsideOffset(self.imgBase, self.range) - 22 + 'px',
+          top: slidedWith + 'px',
+          transform: 'rotate(-90deg)',
+        })
       }
 
       self.output.setAttribute('data-range', self.range.value.toString(10))
