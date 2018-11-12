@@ -146,5 +146,6 @@ export default class Cato {
     this.initHTML()
     this.initStyles()
     this.registerEvents()
+    return false
   }
 }
