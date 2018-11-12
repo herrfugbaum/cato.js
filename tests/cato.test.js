@@ -40,3 +40,17 @@ describe('Cato', () => {
     })
   })
 })
+
+describe('Cato.createSlider()', () => {
+  describe('smoke:', () => {
+    it('should be defined', () => {
+      const container = document.createElement('div')
+      const img1 = new Image()
+      const img2 = new Image()
+
+      container.append(img1, img2)
+
+      expect(new Cato(options, container).createSlider()).toBeDefined()
+    })
+  })
+})
