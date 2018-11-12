@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js --mode=production",
     "test": "jest && codecov",
-    "watch-test": "jest --watch"
+    "watch-test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,9 +15,10 @@
   "keywords": [
     "image comparison",
     "comparison",
-    "slider"
+    "slider",
+    "before-after"
   ],
-  "author": "Pascal Spiesz",
+  "author": "Pascal Spiesz <pascal@slamcode.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/herrfugbaum/cato.js/issues"
@@ -45,6 +46,11 @@
   "dependencies": {},
   "jest": {
     "coverageDirectory": "./coverage/",
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dest/",
+      "<rootDir>/examples/"
+    ],
     "collectCoverage": true,
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/tests/__mocks__/styleMock.js"

@@ -28,10 +28,16 @@ const optionsSecondSlider = {
   },
 }
 
-const firstSlider = new Cato(optionsFirstSlider)
+const firstSlider = new Cato(
+  optionsFirstSlider,
+  document.getElementById('first-slider'),
+)
 
-firstSlider.createSlider(document.getElementById('first-slider'))
+firstSlider.createSlider()
 
-const secondSlider = new Cato(optionsSecondSlider)
+const secondSlider = new Cato(
+  optionsSecondSlider,
+  document.getElementById('second-slider'),
+)
 
-secondSlider.createSlider(document.getElementById('second-slider'))
+secondSlider.createSlider()
