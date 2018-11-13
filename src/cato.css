@@ -33,10 +33,10 @@ input[type=range].cato--inner::-webkit-slider-thumb {
   background-color: #6891a1;
   border: none;
   border-radius: 50%;
-  height: 14px;
-  width: 14px;
+  height: 50px;
+  width: 50px;
   position: relative;
-  margin-top: -4px;
+  margin-top: -25px;
 }
 
 input[type=range].cato--inner::-ms-thumb {
@@ -44,10 +44,10 @@ input[type=range].cato--inner::-ms-thumb {
   background-color: #6891a1;
   border: none;
   border-radius: 50%;
-  height: 14px;
-  width: 14px;
+  height: 50px;
+  width: 50px;
   position: relative;
-  margin-top: -4px;
+  margin-top: -25px;
 }
 
 input[type=range].cato--inner::-moz-range-thumb {
@@ -55,37 +55,37 @@ input[type=range].cato--inner::-moz-range-thumb {
   background-color: #6891a1;
   border: none;
   border-radius: 50%;
-  height: 14px;
-  width: 14px;
+  height: 50px;
+  width: 50px;
   position: relative;
-  margin-top: -4px;
+  margin-top: -25px;
 }
 
 input[type=range].cato--inner::-webkit-slider-runnable-track {
-  background: #666;
+  background: transparent;
   height: 6px;
 }
 
 input[type=range].cato--inner::-ms-track {
-  background: #666;
+  background: transparent;
   height: 6px;
 }
 
 input[type=range].cato--inner::-moz-range-track {
-  background: #666;
+  background: transparent;
   height: 6px;
 }
 
 input[type=range].cato--inner:focus::-webkit-slider-runnable-track {
-  background: #777;
+  background: transparent;
 }
 
 input[type=range].cato--inner:focus::-ms-track {
-  background: #777;
+  background: transparent;
 }
 
 input[type=range].cato--inner:focus::-moz-range-track {
-  background: #777;
+  background: transparent;
 }
 
 .indicator_bubble {

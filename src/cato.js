@@ -47,7 +47,6 @@ export default class Cato {
     // INITIAL STYLINGS
     addClass(container, 'cato')
     addClass(range, 'cato--inner')
-    addClass(range, 'rangeindicator')
     addClass(output, 'indicator_bubble')
     addClass(outputTriangle, 'indicator_triangle')
     container.style.height = this.options.height + 50 + 'px'
@@ -60,7 +59,7 @@ export default class Cato {
       height: this.options.height + 'px',
     })
     setStyles(range, {
-      top: imgBase.getBoundingClientRect().height + 'px',
+      top: imgBase.getBoundingClientRect().height / 2 + 'px',
       width: imgBase.width + 'px',
     })
 
@@ -83,10 +82,11 @@ export default class Cato {
     if (this.options.direction === 'vertical') {
       setStyles(range, {
         transform: 'rotate(90deg)',
+        transformOrigin: 'left',
         width: imgBase.getBoundingClientRect().height + 'px',
-        left: normalizeRightsideOffset(imgBase, range) + 7 + 'px',
-        top: imgBase.getBoundingClientRect().height / 2 + 'px',
-        margin: '-1px 3px 1px',
+        left: imgBase.width / 2 + 'px',
+        top: 0,
+        marginTop: '-2px',
       })
     }
 
