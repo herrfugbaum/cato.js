@@ -1,6 +1,5 @@
 const optionsFirstSlider = {
   // are optional
-  tooltips: true, // boolean
   direction: 'vertical', // string horizontal & vertical
   width: 700, // integer default = 700px
   height: 450, // integer default = 450px
@@ -14,7 +13,6 @@ const optionsFirstSlider = {
 
 const optionsSecondSlider = {
   // are optional
-  tooltips: true, // boolean
   direction: 'horizontal', // string horizontal & vertical
   width: 700, // integer default = 700px
   height: 450, // integer default = 450px

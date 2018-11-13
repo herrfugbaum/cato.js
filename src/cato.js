@@ -2,15 +2,13 @@
 // Compare Apples To Oranges
 
 import setInsetDirection from './util/setInsetDirection.js'
-import { addClass, removeClass } from './util/domClasses.js'
-import { normalizeRightsideOffset } from './util/normalizeRightsideOffset.js'
+import { addClass } from './util/domClasses.js'
 import { setStyles } from './util/setStyles.js'
 import './cato.css'
 
 export default class Cato {
   constructor(options, el) {
     this.options = {
-      tooltips: options.tooltips || false,
       direction: options.direction || 'horizontal',
       width: options.width || 700,
       height: options.height || 450,
@@ -28,11 +26,9 @@ export default class Cato {
     this.imgToSlide = container.children[0]
     this.imgBase = container.children[1]
     this.range = document.createElement('input')
-    this.output = document.createElement('output')
-    this.outputTriangle = document.createElement('span')
     this.range.type = 'range'
 
-    this.slider.append(this.range, this.output, this.outputTriangle)
+    this.slider.append(this.range)
   }
 
   initStyles() {
@@ -41,16 +37,13 @@ export default class Cato {
     const imgBase = this.imgBase
 
     const range = this.range
-    const output = this.output
-    const outputTriangle = this.outputTriangle
 
     // INITIAL STYLINGS
     addClass(container, 'cato')
     addClass(range, 'cato--inner')
-    addClass(range, 'rangeindicator')
-    addClass(output, 'indicator_bubble')
-    addClass(outputTriangle, 'indicator_triangle')
-    container.style.height = this.options.height + 50 + 'px'
+    setStyles(container, {
+      height: this.options.height + 'px',
+    })
     setStyles(imgBase, {
       width: this.options.width + 'px',
       height: this.options.height + 'px',
@@ -60,13 +53,10 @@ export default class Cato {
       height: this.options.height + 'px',
     })
     setStyles(range, {
-      top: imgBase.getBoundingClientRect().height + 'px',
+      top: imgBase.getBoundingClientRect().height / 2 + 'px',
       width: imgBase.width + 'px',
     })
 
-    output.style.top = imgBase.getBoundingClientRect().height - 40 + 'px'
-    outputTriangle.style.top =
-      imgBase.getBoundingClientRect().height - 15 + 'px'
     range.value = this.options.initial
 
     // initial overlap
@@ -83,10 +73,11 @@ export default class Cato {
     if (this.options.direction === 'vertical') {
       setStyles(range, {
         transform: 'rotate(90deg)',
-        width: imgBase.getBoundingClientRect().height + 'px',
-        left: normalizeRightsideOffset(imgBase, range) + 7 + 'px',
-        top: imgBase.getBoundingClientRect().height / 2 + 'px',
-        margin: '-1px 3px 1px',
+        transformOrigin: 'left', // use left edge for transformation instead of center
+        width: imgBase.getBoundingClientRect().height + 'px', // set width to height, because the indicator is rotated for 90°
+        left: imgBase.width / 2 + 'px', // center it horizontally
+        top: 0,
+        marginTop: '-2px',
       })
     }
 
@@ -101,16 +92,6 @@ export default class Cato {
       handleSlides(this)
     })
 
-    if (this.options.tooltips) {
-      this.range.addEventListener('focus', () => {
-        handleFocus(this)
-      })
-
-      this.range.addEventListener('blur', () => {
-        handleBlur(this)
-      })
-    }
-
     // Event handlers
     const handleSlides = function(self) {
       const width = self.imgBase.width
@@ -124,32 +105,6 @@ export default class Cato {
         self.options.direction,
         slidedWith,
       )
-      self.output.style.left = slidedWith + 'px'
-      self.outputTriangle.style.left = slidedWith + 'px'
-
-      if (self.options.direction === 'vertical') {
-        setStyles(self.output, {
-          left: normalizeRightsideOffset(self.imgBase, self.range) - 45 + 'px',
-          top: slidedWith - 10 + 'px',
-        })
-        setStyles(self.outputTriangle, {
-          left: normalizeRightsideOffset(self.imgBase, self.range) - 22 + 'px',
-          top: slidedWith + 'px',
-          transform: 'rotate(-90deg)',
-        })
-      }
-
-      self.output.setAttribute('data-range', self.range.value.toString(10))
-    }
-
-    const handleFocus = function(self) {
-      addClass(self.output, 'active')
-      addClass(self.outputTriangle, 'active')
-    }
-
-    const handleBlur = function(self) {
-      removeClass(self.output, 'active')
-      removeClass(self.outputTriangle, 'active')
     }
   }
 
