@@ -44,14 +44,7 @@ export default class Cato {
     setStyles(container, {
       height: this.options.height + 'px',
     })
-    setStyles(imgBase, {
-      width: this.options.width + 'px',
-      height: this.options.height + 'px',
-    })
-    setStyles(imgToSlide, {
-      width: this.options.width + 'px',
-      height: this.options.height + 'px',
-    })
+
     setStyles(range, {
       top: imgBase.getBoundingClientRect().height / 2 + 'px',
       width: imgBase.width + 'px',
@@ -92,6 +85,20 @@ export default class Cato {
       handleSlides(this)
     })
 
+    window.onresize = () => {
+      if (this.options.direction === 'vertical') {
+        setStyles(this.range, {
+          width: this.imgBase.getBoundingClientRect().height + 'px', // set width to height, because the indicator is rotated for 90°
+          left: imgBase.width / 2 + 'px', // center it horizontally
+        })
+      } else {
+        setStyles(this.range, {
+          width: this.imgBase.getBoundingClientRect().width + 'px',
+          top: this.imgBase.getBoundingClientRect().height / 2 + 'px',
+        })
+      }
+    }
+
     // Event handlers
     const handleSlides = function(self) {
       const width = self.imgBase.width
@@ -105,6 +112,18 @@ export default class Cato {
         self.options.direction,
         slidedWith,
       )
+
+      if (self.options.direction === 'vertical') {
+        setStyles(self.range, {
+          width: self.imgBase.getBoundingClientRect().height + 'px', // set width to height, because the indicator is rotated for 90°
+          left: imgBase.width / 2 + 'px', // center it horizontally
+        })
+      } else {
+        setStyles(self.range, {
+          width: self.imgBase.getBoundingClientRect().width + 'px',
+          top: imgBase.getBoundingClientRect().height / 2 + 'px',
+        })
+      }
     }
   }
 
