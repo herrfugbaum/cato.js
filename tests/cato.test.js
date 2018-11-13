@@ -1,7 +1,6 @@
 import Cato from '../src/cato.js'
 
 const options = {
-  tooltips: true,
   direction: 'horizontal',
   width: 700,
   height: 450,
@@ -30,7 +29,6 @@ describe('Cato', () => {
       const img2 = new Image()
       container.append(img1, img2)
       const slider = new Cato(options, container)
-      expect(slider.options.tooltips).toBe(true)
       expect(slider.options.direction).toBe('horizontal')
       expect(slider.options.width).toBe(700)
       expect(slider.options.height).toBe(450)
