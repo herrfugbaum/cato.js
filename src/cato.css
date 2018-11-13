@@ -37,6 +37,7 @@ input[type=range].cato--inner::-webkit-slider-thumb {
   width: 50px;
   position: relative;
   margin-top: -25px;
+  cursor: move;
 }
 
 input[type=range].cato--inner::-ms-thumb {
@@ -48,6 +49,7 @@ input[type=range].cato--inner::-ms-thumb {
   width: 50px;
   position: relative;
   margin-top: -25px;
+  cursor: move;
 }
 
 input[type=range].cato--inner::-moz-range-thumb {
@@ -59,6 +61,7 @@ input[type=range].cato--inner::-moz-range-thumb {
   width: 50px;
   position: relative;
   margin-top: -25px;
+  cursor: move;
 }
 
 input[type=range].cato--inner::-webkit-slider-runnable-track {
