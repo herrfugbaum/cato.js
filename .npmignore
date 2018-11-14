@@ -1,0 +1,8 @@
+src/
+examples/
+coverage/
+codecov.yml
+.travis.yml
+.eslintrc.json
+.gitattributes
+.gitignore
