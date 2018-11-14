@@ -29,6 +29,7 @@ export default class Cato {
     this.range.type = 'range'
 
     this.slider.append(this.range)
+    return this
   }
 
   initStyles() {
@@ -79,13 +80,14 @@ export default class Cato {
     if (this.options.filter.active) {
       imgToSlide.style.filter = this.options.filter.effect
     }
+    return this
   }
 
   registerEvents() {
     this.range.addEventListener('input', () => this.handleSlides())
 
     window.addEventListener('resize', () => this.resizeIndicator())
-    return false
+    return this
   }
 
   resizeIndicator() {
@@ -123,6 +125,6 @@ export default class Cato {
     this.initHTML()
     this.initStyles()
     this.registerEvents()
-    return false
+    return this
   }
 }
