@@ -1,9 +1,17 @@
 language: node_js
 node_js:
-  - "node"
+- node
 install:
-  - yarn install
-  - yarn global add codecov
+- yarn install
+- yarn global add codecov
 cache:
   directories:
-    - "node_modules"
+  - node_modules
+deploy:
+  provider: npm
+  email: pascal@slamcode.com
+  api_key:
+    secure: XdM3WYCT+RcRzwfFbW5rzIIOjTX8ztn/eOeoeSBqIV+n+/C5KJWK6SNdmSAaz2qggCifzItQkIcDo5AUvwpbAr94aoKDakLumgkkM2gSStqetWORBIJmLwxdEp9eUjYfv6sTVH3Sv11gtmpGdPnfdL5/XfjLdYO+38TceDO1njyeWLIYsXltFVk212hnqyaqpllFiy0LGtYY3GNqnC0pzU94bJjV8wWlO95W5OTSlFM2n0QWRLiSsJMeAk6nLoTpWpCC387spbSXVCaGJl7GcN7M2VHNOD3m8tPnvKjgucMRgUIPz8wsotQYcIBe0brcEj4h1S2ur2Wxw11TR1sbr/52JP0D0p7XTwM4fSF3cKC4DDVtuoHeeQxIeYaP35g6AmRSjXkk09gZLo/d73JAw1hQ1nVK9/4Xnp6Vpi3IZihqy5ilFB5t03We0xemL5ESpFoxJi6tgL9wK8uV4fowf+cYwsyPGSTQKqh/iOGtTfz2wbKtXZMzGmgKwqgOTaEJdB5FNAklh3C9kVuyyBKJ6rZqsNCrtQDo0NruUtBFDjWTFkOhU7nSL+krFxVmHh30H7/VwF1GzeitoX2NYFoyQM9F/5eS9TuDmtrUAoYERDhxAeY12uXFAozxfywZlXRGv1jqwiIRUImM4bAtY3cfj4JN8EsuW6qHSEvt1WprW4E=
+  on:
+    tags: true
+    repo: herrfugbaum/cato.js

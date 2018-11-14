@@ -1,6 +1,6 @@
 {
-  "name": "cato.js",
-  "version": "0.0.1",
+  "name": "cato",
+  "version": "0.1.0",
   "description": "Small, dependency-free library for (image) comparison sliders.",
   "main": "src/cato.js",
   "scripts": {
