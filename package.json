@@ -9,6 +9,9 @@
     "test": "jest && codecov",
     "watch-test": "jest"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/herrfugbaum/cato.js.git"
