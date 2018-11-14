@@ -5,6 +5,7 @@
   "main": "src/cato.js",
   "scripts": {
     "build": "webpack --config webpack.config.js --mode=production",
+    "build-dev": "webpack --config webpack.config.js --mode=development",
     "test": "jest && codecov",
     "watch-test": "jest"
   },
