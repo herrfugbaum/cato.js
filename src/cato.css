@@ -1,6 +1,7 @@
 .cato {
   position: relative;
   display: block;
+  max-width: 100%;
 }
 
 .cato img {
@@ -13,6 +14,8 @@
   -o-box-shadow: none;
   -ms-box-shadow: none;
   border: none;
+  max-width: 100%;
+  height: auto;
 }
 
 input[type=range].cato--inner {

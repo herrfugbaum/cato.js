@@ -10,8 +10,8 @@ export default class Cato {
   constructor(options, el) {
     this.options = {
       direction: options.direction || 'horizontal',
-      width: options.width || 700,
-      height: options.height || 450,
+      width: options.width || '100%',
+      height: options.height || '100%',
       initial: options.initial || 30,
       filter: {
         active: options.filter.active || false,
@@ -43,15 +43,9 @@ export default class Cato {
     addClass(range, 'cato--inner')
     setStyles(container, {
       height: this.options.height + 'px',
+      maxWidth: this.options.width + 'px',
     })
-    setStyles(imgBase, {
-      width: this.options.width + 'px',
-      height: this.options.height + 'px',
-    })
-    setStyles(imgToSlide, {
-      width: this.options.width + 'px',
-      height: this.options.height + 'px',
-    })
+
     setStyles(range, {
       top: imgBase.getBoundingClientRect().height / 2 + 'px',
       width: imgBase.width + 'px',
@@ -88,24 +82,41 @@ export default class Cato {
   }
 
   registerEvents() {
-    this.range.addEventListener('input', () => {
-      handleSlides(this)
-    })
+    this.range.addEventListener('input', () => this.handleSlides())
 
-    // Event handlers
-    const handleSlides = function(self) {
-      const width = self.imgBase.width
-      const height = self.imgBase.getBoundingClientRect().height
-      const slidedWith =
-        self.options.direction === 'horizontal'
-          ? (width * self.range.value) / 100
-          : (height * self.range.value) / 100
+    window.addEventListener('resize', () => this.resizeIndicator())
+    return false
+  }
 
-      self.imgBase.style.clipPath = setInsetDirection(
-        self.options.direction,
-        slidedWith,
-      )
+  resizeIndicator() {
+    if (this.options.direction === 'vertical') {
+      setStyles(this.range, {
+        width: this.imgBase.getBoundingClientRect().height + 'px', // set width to height, because the indicator is rotated for 90°
+        left: this.imgBase.width / 2 + 'px', // center it horizontally
+      })
+    } else {
+      setStyles(this.range, {
+        width: this.imgBase.getBoundingClientRect().width + 'px',
+        top: this.imgBase.getBoundingClientRect().height / 2 + 'px',
+      })
     }
+    return false
+  }
+
+  handleSlides() {
+    const width = this.imgBase.width
+    const height = this.imgBase.getBoundingClientRect().height
+    const slidedWith =
+      this.options.direction === 'horizontal'
+        ? (width * this.range.value) / 100
+        : (height * this.range.value) / 100
+
+    this.imgBase.style.clipPath = setInsetDirection(
+      this.options.direction,
+      slidedWith,
+    )
+    this.resizeIndicator()
+    return false
   }
 
   createSlider() {
