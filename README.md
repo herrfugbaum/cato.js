@@ -44,10 +44,8 @@ Add this JavaScript snippet inside your ```<body></body>``` tags of your HTML fi
 Alternatively you can place this inside a, for example, index.js file and load it with ```<script src="path/to/my/index.js"></script>```.
 In both cases make sure to place this script tag **after** the tag in which you load the Cato library from the CDN.
 
-You can find a working example in the examples/global-variable/ directory.- [About](#about)
-- [How To](#how-to)
-  - [With a CDN](#with-a-cdn)
-- [Changelog](#changelog)
+You can find a working example in the examples/global-variable/ directory.
+
 ```javascript
 const options = {
   direction: 'vertical', // string horizontal & vertical
@@ -69,7 +67,7 @@ mySlider.createSlider()
 ```
 
 
-You can find the How To of version 0.0.1 [here](https://github.com/herrfugbaum/cato.js/releases/tag/v0.0.1)
+If you are searching for the initial Webkit-only release, you can find the How To of version 0.0.1 [here](https://github.com/herrfugbaum/cato.js/releases/tag/v0.0.1).
 
 # Changelog
 
