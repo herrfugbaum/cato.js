@@ -1,8 +1,8 @@
 {
   "name": "@herrfugbaum/cato",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Small, dependency-free library for (image) comparison sliders.",
-  "main": "src/cato.js",
+  "main": "dest/cato.min.js",
   "scripts": {
     "build": "webpack --config webpack.config.js --mode=production",
     "build-dev": "webpack --config webpack.config.js --mode=development",
