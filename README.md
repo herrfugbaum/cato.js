@@ -10,6 +10,8 @@
 
 **C**ompare **A**pples **T**o **O**ranges
 
+![Cato Logo](https://s3-us-west-2.amazonaws.com/s.cdpn.io/496585/Cato_Logo120x150.png)
+
 cato.js is a dependency free library for (image) comparison sliders.
 
 It currently gets rewritten in modern JavaScript.
