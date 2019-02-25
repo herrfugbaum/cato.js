@@ -23,8 +23,12 @@ export default class Cato {
 
   initHTML() {
     const container = this.slider
-    this.imgToSlide = container.children[0]
-    this.imgBase = container.children[1]
+    const images = Array.from(
+      document.querySelectorAll(`#${this.slider.id} img`),
+    )
+    this.imgToSlide = images[0] || container.children[0]
+    this.imgBase = images[1] || container.children[1]
+
     this.range = document.createElement('input')
     this.range.type = 'range'
 

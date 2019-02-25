@@ -28,6 +28,7 @@ describe('Cato', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
 
       container.append(img1, img2)
 
@@ -38,6 +39,8 @@ describe('Cato', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
+
       container.append(img1, img2)
       const slider = new Cato(optionsHorizontal, container)
       expect(slider.options.direction).toBe('horizontal')
@@ -52,6 +55,8 @@ describe('Cato', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
+
       container.append(img1, img2)
       const slider = new Cato(optionsVertical, container)
       expect(slider.options.direction).toBe('vertical')
@@ -70,6 +75,7 @@ describe('Cato.createSlider()', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
 
       container.append(img1, img2)
 
@@ -86,6 +92,7 @@ describe('Cato.initHTML', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
 
       container.append(img1, img2)
       expect(new Cato(optionsHorizontal, container).initHTML()).toBeDefined()
@@ -99,6 +106,7 @@ describe('Cato.initStyles', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
 
       container.append(img1, img2)
       const testObj = new Cato(optionsHorizontal, container).initHTML()
@@ -113,6 +121,7 @@ describe('Cato.registerEvents', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
 
       container.append(img1, img2)
       const testObj = new Cato(optionsHorizontal, container)
@@ -129,6 +138,7 @@ describe('Cato.resizeIndicator', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
+      container.id = 'test'
 
       container.append(img1, img2)
       const testObj = new Cato(optionsHorizontal, container)
@@ -145,7 +155,8 @@ describe('Cato.handleSlides', () => {
       const container = document.createElement('div')
       const img1 = new Image()
       const img2 = new Image()
-
+      container.id = 'test'
+      debugger
       container.append(img1, img2)
       const testObj = new Cato(optionsHorizontal, container)
         .initHTML()
