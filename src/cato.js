@@ -3,7 +3,7 @@
 
 import setInsetDirection from './util/setInsetDirection.js'
 import { addClass } from './util/domClasses.js'
-import { setStyles } from './util/setStyles.js'
+import { setStyles, setVendor } from './util/setStyles.js'
 import './cato.css'
 
 export default class Cato {
@@ -59,10 +59,11 @@ export default class Cato {
       this.options.direction === 'horizontal'
         ? (imgBase.width * this.options.initial) / 100
         : (imgBase.height * this.options.initial) / 100
-    imgBase.style.clipPath = setInsetDirection(
-      this.options.direction,
-      initialClip,
-    )
+    
+		setVendor(imgBase, "ClipPath", setInsetDirection(
+			this.options.direction,
+			initialClip,
+		))
 
     // flip input range and adjust to the side if vertical
     if (this.options.direction === 'vertical') {
@@ -113,10 +114,10 @@ export default class Cato {
         ? (width * this.range.value) / 100
         : (height * this.range.value) / 100
 
-    this.imgBase.style.clipPath = setInsetDirection(
-      this.options.direction,
-      slidedWith,
-    )
+		setVendor(this.imgBase, "ClipPath", setInsetDirection(
+			this.options.direction,
+			slidedWith,
+		))
     this.resizeIndicator()
     return false
   }
