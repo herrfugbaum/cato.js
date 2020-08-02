@@ -49,7 +49,7 @@ export default class Cato {
 
     setStyles(range, {
       top: imgBase.getBoundingClientRect().height / 2 + 'px',
-      width: imgBase.width + 'px',
+      width: imgBase.getBoundingClientRect().width + 'px',
     })
 
     range.value = this.options.initial
@@ -57,13 +57,13 @@ export default class Cato {
     // initial overlap
     const initialClip =
       this.options.direction === 'horizontal'
-        ? (imgBase.width * this.options.initial) / 100
+        ? (imgBase.getBoundingClientRect().width * this.options.initial) / 100
         : (imgBase.height * this.options.initial) / 100
-    
-		setVendor(imgBase, "ClipPath", setInsetDirection(
-			this.options.direction,
-			initialClip,
-		))
+
+    setVendor(imgBase, "ClipPath", setInsetDirection(
+      this.options.direction,
+      initialClip,
+    ))
 
     // flip input range and adjust to the side if vertical
     if (this.options.direction === 'vertical') {
@@ -71,7 +71,7 @@ export default class Cato {
         transform: 'rotate(90deg)',
         transformOrigin: 'left', // use left edge for transformation instead of center
         width: imgBase.getBoundingClientRect().height + 'px', // set width to height, because the indicator is rotated for 90°
-        left: imgBase.width / 2 + 'px', // center it horizontally
+        left: imgBase.getBoundingClientRect().width / 2 + 'px', // center it horizontally
         top: 0,
         marginTop: '-2px',
       })
@@ -95,7 +95,7 @@ export default class Cato {
     if (this.options.direction === 'vertical') {
       setStyles(this.range, {
         width: this.imgBase.getBoundingClientRect().height + 'px', // set width to height, because the indicator is rotated for 90°
-        left: this.imgBase.width / 2 + 'px', // center it horizontally
+        left: this.imgBase.getBoundingClientRect().width / 2 + 'px', // center it horizontally
       })
     } else {
       setStyles(this.range, {
@@ -107,17 +107,17 @@ export default class Cato {
   }
 
   handleSlides() {
-    const width = this.imgBase.width
+    const width = this.imgBase.getBoundingClientRect().width
     const height = this.imgBase.getBoundingClientRect().height
     const slidedWith =
       this.options.direction === 'horizontal'
         ? (width * this.range.value) / 100
         : (height * this.range.value) / 100
 
-		setVendor(this.imgBase, "ClipPath", setInsetDirection(
-			this.options.direction,
-			slidedWith,
-		))
+    setVendor(this.imgBase, "ClipPath", setInsetDirection(
+      this.options.direction,
+      slidedWith,
+    ))
     this.resizeIndicator()
     return false
   }
